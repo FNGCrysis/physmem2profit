@@ -22,11 +22,17 @@ jobs:
       run: nuget restore server/Physmem2profit.sln
 
     - name: Build server solution
-      run: msbuild server/Physmem2profit.sln /p:Configuration=Release /p:Platform="Any CPU" /p:OutDir=..\bin\Release\
+      run: msbuild server/Physmem2profit.sln /p:Configuration=Release /p:Platform="Any CPU" /p:OutputPath=bin\Release\
+
+    - name: List build output
+      run: dir server\bin\Release\
+      shell: cmd
 
     - name: Upload server build artifact
       uses: actions/upload-artifact@v4
       with:
         name: physmem2profit-server
-        path: server/bin/Release/
+        path: |
+          server/bin/Release/
+          server/Physmem2profit/bin/Release/
         retention-days: 7
