@@ -18,14 +18,6 @@ jobs:
     - name: Setup MSBuild
       uses: microsoft/setup-msbuild@v2
 
-    - name: Install .NET Framework 4.5.2 Developer Pack
-      run: |
-        $url = "https://download.microsoft.com/download/E/2/1/E21644B5-2DF2-47C2-91BD-63C560427900/NDP452-KB2901907-x86-x64-AllOS-ENU.exe"
-        $output = "NDP452-DevPack.exe"
-        Invoke-WebRequest -Uri $url -OutFile $output
-        Start-Process -FilePath $output -ArgumentList "/q /norestart" -Wait
-      shell: powershell
-
     - name: Restore NuGet packages
       run: nuget restore server/Physmem2profit.sln
 
