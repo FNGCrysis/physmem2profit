@@ -2,9 +2,9 @@ name: Build Physmem2profit Server
 
 on:
   push:
-    branches: [ main ]
+    branches: [ public ]
   pull_request:
-    branches: [ main ]
+    branches: [ public ]
 
 jobs:
   build:
